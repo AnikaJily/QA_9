@@ -18,16 +18,6 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install system dependencies and Google Chrome
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget gnupg ca-certificates
-          # сохраняем ключ в keyring и добавляем репозиторий с signed-by
-          sudo wget -q -O /usr/share/keyrings/google-linux-signing-keyring.gpg https://dl.google.com/linux/linux_signing_key.pub
-          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
       - name: Cache pip
         uses: actions/cache@v4
         with:
